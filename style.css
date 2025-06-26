@@ -1,0 +1,572 @@
+@import url('https://fonts.googleapis.com/css2?family=Imprima&family=Inter:wght@400;700&display=swap');
+
+/* --- Estilos Globais e Reset Simples --- */
+/* Reset básico para evitar margens e paddings padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Fundamental para layouts responsivos! */
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    /* Centraliza horizontalmente o conteúdo se a largura for menor */
+    flex-direction: column;
+    background: #23242a;
+    min-height: 100vh;
+    padding-top: 80px;
+    /* Adiciona um padding no topo para o header fixo não cobrir o conteúdo */
+}
+
+/* --- Header Fixo e Navegação --- */
+#main-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.85);
+    z-index: 999;
+    transition: top 0.3s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    /* Limita a largura do conteúdo do header em telas grandes */
+    margin: 0 auto;
+    /* Centraliza o conteúdo do header */
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Links padrão (desktop) */
+.nav-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #3498db;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Botão hambúrguer */
+.hamburger {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    padding: 0.5rem;
+}
+
+.hamburger svg {
+    width: 28px;
+    height: 28px;
+    color: #333;
+}
+
+/* --- Estilos para Botões (geral) --- */
+button {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Layout Principal do Conteúdo --- */
+main {
+    /* É importante ter uma tag <main> no HTML para envolver todo o conteúdo principal */
+    width: 100%;
+    max-width: 1200px;
+    /* Limita a largura máxima do conteúdo em telas grandes */
+    padding: 20px;
+    /* Padding geral para o conteúdo principal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centraliza os artigos e seções no main */
+    margin: 20px auto;
+    /* <<< NOVIDADE/AJUSTE AQUI! Centraliza o container principal */
+}
+
+
+section {
+    border-radius: 20px;
+    padding: 20px;
+    margin: 15px auto;
+    /* <<< AJUSTE AQUI! Antes era 15px 0, agora 15px auto para centralizar */
+    width: 100%;
+    max-width: 900px;
+    /* Limita a largura máxima da seção */
+    text-align: left;
+    border: 2px solid gray;
+    background: linear-gradient(135deg, #fffde7, #f9f9c5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+h1 {
+    color: black;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo base para todos os artigos */
+article {
+    border-radius: 20px;
+    padding: 20px;
+    /* REMOVA ou ajuste as bordas específicas se não quiser em todos os artigos */
+    /* border: 2px solid gray; */
+    /* <<< REMOVIDO PARA USAR OS BORDERS ESPECÍFICOS DOS ARTICLES */
+
+    margin: 15px auto;
+    /* <<< AJUSTE AQUI! Antes era 15px 0, agora 15px auto para centralizar */
+
+    width: 100%;
+    /* Garante que ele ocupe 100% da largura DISPONÍVEL até o max-width */
+    max-width: 800px;
+    /* <<< NOVIDADE/AJUSTE AQUI! DEFINA UMA LARGURA MÁXIMA para os artigos (ajuste se precisar) */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Removido border: 2px solid gray; daqui para permitir os backgrounds específicos */
+}
+
+/* Estilo para todas as imagens dentro de artigos */
+article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes de tipografia dentro dos artigos para melhor leitura */
+article h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+article p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+article ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+article li {
+    margin-bottom: 5px;
+}
+
+/* --- Estilos Específicos dos Artigos (seus gradientes e cores) --- */
+
+/* Mantenha todos os seus estilos de artigo.
+   Apenas certifique-se de que a cor do texto (color)
+   seja legível em cima do gradiente de fundo de cada um.
+   Fiz alguns ajustes onde achei que o contraste poderia ser baixo. */
+
+article.crescimento {
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    border: none;
+    box-shadow: 0 0 10px #fcb69f;
+    color: #333;
+}
+
+article.industrializacao {
+    background: linear-gradient(135deg, #d4fc79, #96e6a1);
+    border: none;
+    box-shadow: 0 0 10px #96e6a1;
+    color: #1e3d23;
+}
+
+article.expansao {
+    background: linear-gradient(135deg, #c9ffbf, #ffafbd);
+    border: none;
+    box-shadow: 0 0 10px #ffafbd;
+    color: #3b2f2f;
+}
+
+article.acelerada {
+    background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+    border: none;
+    box-shadow: 0 0 10px #a18cd1;
+    color: #332a4d;
+}
+
+article.problemas {
+    background: linear-gradient(135deg, #f857a6, #ff5858);
+    border: none;
+    box-shadow: 0 0 10px #f857a6;
+    color: white;
+}
+
+article.sustentavel {
+    background: linear-gradient(135deg, #56ab2f, #a8e063);
+    border: none;
+    box-shadow: 0 0 10px #56ab2f;
+    color: white;
+}
+
+article.conclusao {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    border: none;
+    box-shadow: 0 0 10px #185a9d;
+    color: white;
+}
+
+article.D1 {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 0 10px #e74c3c;
+    color: white;
+}
+
+article.D2 {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    box-shadow: 0 0 10px #3498db;
+    color: white;
+}
+
+article.D3 {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    box-shadow: 0 0 10px #8e44ad;
+    color: white;
+}
+
+article.T1 {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    box-shadow: 0 0 10px #f1c40f;
+    color: #333;
+}
+
+article.T2 {
+    background: linear-gradient(135deg, #964b00, #a0522d);
+    box-shadow: 0 0 10px #964b00;
+    color: white;
+}
+
+article.T3 {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    box-shadow: 0 0 10px #27ae60;
+    color: white;
+}
+
+article.T4 {
+    background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+    box-shadow: 0 0 10px #7f8c8d;
+    color: white;
+}
+
+article.T5 {
+    background: linear-gradient(135deg, #e67e22, #d35400);
+    box-shadow: 0 0 10px #e67e22;
+    color: white;
+}
+
+article.four1 {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    box-shadow: 0 0 10px #c0392b;
+    color: white;
+    /* Mantido, bom contraste */
+}
+
+article.four2 {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    box-shadow: 0 0 10px #8e44ad;
+    color: white;
+    /* Mantido, bom contraste */
+}
+
+article.four3 {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    box-shadow: 0 0 10px #2c3e50;
+    color: white;
+    /* Mantido, bom contraste */
+}
+
+
+article.four4 {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    box-shadow: 0 0 10px #f39c12;
+    color: white;
+    /* Mantido, bom contraste */
+}
+
+
+article.four5 {
+
+    background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+
+    box-shadow: 0 0 10px #7f8c8d;
+
+    color: white;
+
+    /* Mantido, bom contraste */
+
+}
+
+/* Atenção: as classes four6 e four7 estão sem "article." no seu código original,
+   o que as torna estilos globais. Se a intenção é que sejam para artigos,
+   adicione "article." antes delas. Mantenho como no seu original por enquanto. */
+.four6 {
+    background: linear-gradient(135deg, #27ae60, #2ecc71);
+    box-shadow: 0 0 10px #27ae60;
+    color: white;
+}
+
+.four7 {
+    background: linear-gradient(135deg, #d35400, #e67e22);
+    box-shadow: 0 0 10px #d35400;
+    color: white;
+}
+
+/* --- SEÇÃO SOLUÇÕES DE MOBILIDADE (Q5) --- */
+/* Mantenha os estilos existentes para Q5, mas verifique o contraste */
+.cinco1 {
+    background: green;
+    box-shadow: 0 0 5px greenyellow;
+    border: none;
+    color: white;
+}
+
+.cinco2 {
+    background: orange;
+    box-shadow: 0 0 5px rgb(255, 192, 76);
+    border: none;
+    color: white;
+}
+
+.cinco3 {
+    background: red;
+    box-shadow: 0 0 5px crimson;
+    border: none;
+    color: white;
+}
+
+.cinco4 {
+    background: #8bb4ff;
+    box-shadow: 0 0 5px blue;
+    border: none;
+    color: white;
+}
+
+.cinco5 {
+    background: yellowgreen;
+    box-shadow: 0 0 5px seagreen;
+    border: none;
+    color: ghostwhite;
+}
+
+.cinco6 {
+    background: orangered;
+    border: none;
+    box-shadow: 0 0 5px crimson;
+    color: white;
+}
+
+/* --- Footer e Seção "Nome" --- */
+footer {
+    color: aliceblue;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+
+#nome {
+    display: flex;
+    justify-content: flex-start;
+    /* Alinha o texto à esquerda dentro da div #nome */
+    align-items: center;
+    /* Centraliza verticalmente o texto dentro da div, se houver mais de uma linha */
+    border-radius: 20px;
+    background: wheat;
+    margin: 0 auto 10px auto;
+    /* <<< AJUSTE AQUI! Isso centraliza a div horizontalmente */
+    color: dimgray;
+    padding: 15px 20px;
+    max-width: 500px;
+    width: fit-content;
+    /* Faz a div se ajustar ao conteúdo, mas ainda permite max-width */
+    text-align: left;
+}
+
+.aside {
+    color: white;
+    background: linear-gradient(rgba(37, 37, 121, 0.5), rgba(82, 53, 152, 0.5));
+    text-align: center;
+    padding: 20px;
+    margin: 15px auto;
+    /* <<< AJUSTE AQUI! Centraliza e adiciona margem vertical */
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+}
+
+
+/* --- Media Queries (Melhorias para Mobile) --- */
+@media (max-width: 768px) {
+    .header-content {
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-container {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        padding: 1rem 0;
+        display: none;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid #eee;
+    }
+
+    .nav-container.active {
+        display: flex;
+    }
+
+    .nav-link {
+        padding: 0.75rem 0;
+        text-align: center;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    body {
+        padding-top: 70px;
+    }
+
+    main {
+        padding: 10px;
+        margin: 10px auto;
+        /* <<< AJUSTE AQUI! Centraliza o main também no mobile */
+    }
+
+    section {
+        padding: 15px;
+        margin: 10px auto;
+        /* <<< AJUSTE AQUI! Mantém a centralização da seção no mobile */
+    }
+
+    article {
+        padding: 15px;
+        margin: 10px auto;
+        /* <<< AJUSTE AQUI! Mantém a centralização do artigo no mobile */
+    }
+
+    article h2 {
+        font-size: 1.2rem;
+    }
+
+    article p {
+        font-size: 0.95rem;
+    }
+
+    #nome {
+        padding: 10px;
+        font-size: 0.9rem;
+        margin: 0 auto 10px auto;
+        /* <<< AJUSTE AQUI! Garante centralização no mobile */
+    }
+}
+
+/* Media Query para telas menores que 480px, como smartphones pequenos */
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0.8rem;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    body {
+        padding-top: 60px;
+    }
+
+    main {
+        padding: 5px;
+        margin: 5px auto;
+        /* <<< AJUSTE AQUI! Centraliza o main em telas muito pequenas */
+    }
+
+    section,
+    article {
+        padding: 10px;
+        margin: 8px auto;
+        /* <<< AJUSTE AQUI! Mantém a centralização */
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    article h2 {
+        font-size: 1.1rem;
+    }
+
+    article p {
+        font-size: 0.9rem;
+    }
+
+    #nome {
+        margin: 0 auto 10px auto;
+        /* <<< AJUSTE AQUI! Garante centralização no mobile muito pequeno */
+    }
+}
